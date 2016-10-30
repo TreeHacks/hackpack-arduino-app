@@ -7,6 +7,8 @@ We begin with a brief outline of serial communication and proceed to create a si
 
 Serial communication through a UART port enables an Arduino to send messages to other devices, such as a desktop computer or another Arduino. Serial communication is a frequently used protocol to send data among devices; prior to USB, many computer peripherals were serial devices. Today, UART ports are frequently used to send data from an embedded device, such as an Arduino or Raspberry Pi, to sensors, including a GPS or LCD display. For more information on the mechanics of serial communication, consult: https://learn.sparkfun.com/tutorials/serial-communication. 
 
+Clone this repository by running `git clone https://github.com/TreeHacks/hackpack-arduino-app.git` from your command line. It includes this readme and sample code. 
+
 ## Arduino: Using the Serial Monitor 
 
 The serial monitor is perhaps the most important debugging tool for Arduino programs. See the "Hello, World" program as an example: 
