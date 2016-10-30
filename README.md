@@ -86,4 +86,23 @@ Similar to Arduino, Processing sketches include a `setup` function, that runs on
 
 Though Processing and python provide some of the simplest methods for interfacing an Arduino with a computer, many other languages, including Matlab and Java, provide serial communication libraries for interacting with an Arduino. 
 
-Credit: https://learn.sparkfun.com/tutorials/connecting-arduino-to-processing for some Processing examples, http://playground.arduino.cc/Interfacing/Python for python examples. 
+## Reading and Writing 
+
+It is possible to perform two way communication with the Arduino as well. Generally, it is good practice to perform some sort of handshake between the microcontroller and the computer to ensure both devices are sending messages when expected. This can be as simple as: 
+
+```
+void testContact() {
+	// While there are no bytes incoming on the Serial 
+	while (Serial.available() <= 0) {
+		Serial.println("ABC"); 
+	}
+}
+```
+
+Note that the line `while (Serial.available() <= 0)` will be true while there are no bytes waiting for the Arduino to process. 
+
+## Credit
+
+https://learn.sparkfun.com/tutorials/connecting-arduino-to-processing for some Processing examples, http://playground.arduino.cc/Interfacing/Python for python examples. 
+
+by Andrew 
