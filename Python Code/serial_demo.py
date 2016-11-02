@@ -5,7 +5,10 @@ TreeHacks 2017
 """
 
 import serial 
-ser = serial.Serial('/dev/tty.usbserial', 9600)
 
-while True:
-	print ser.readline()
+try: 
+	ser = serial.Serial('/dev/tty.usbserial', 9600)
+	while True:
+		print ser.readline()
+except: 
+	print 'port not found'
