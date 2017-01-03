@@ -16,6 +16,51 @@ Digital sensors can communicate with the Arduino using a variety of protocols, s
 Wiring a sensor to an Arduino depends on the communication protocol in use. This tutorial will cover wiring with an analog sensor and a digital I2C sensor. All sensors mentioned in the tutorial are available at Treehacks. Many of them come with circuit boards that simplify the wiring. 
 
 #### Analog Sensors 
+We'll go over how to use one of Treehacks' photoresistors with an Arduino Uno. Take the sensor breakout and plug in one of the three pin attachment cables. This cable allows easy connection to an Arduino or breadboard. Plug the black lead (labeled GND) into a GND (ground, or 0V) pin on the Arduino, the red (labeled VCC) into the Uno's 5V pin, and the yellow cable into A5. 
+
+[wiring picture]
+
+Now that the sensor is wired, we've got to upload and run code to test it. Open (or [download](https://www.arduino.cc/en/main/software) and open) the Arduino app, and open the file "photoresistor/photoresistor/ino" located in this repository. 
+
+```
+/* 
+ *  Photoresistor sample code. Prints out value of photoresistor 
+ *  reading on analog pin A5. 
+ */
+
+int pin = A5;  
+int val = 0; 
+
+void setup() {
+  Serial.begin(9600);
+}
+
+void loop() {
+  val = analogRead(pin);
+  Serial.println(val);
+}
+```
+
+This code is quite simple: it takes an integer analog reading and prints it to the Serial monitor, which can be opened from the Arduino app. You should see a stream of numbers: 
+```
+283
+290
+294
+305
+309
+315
+318
+330
+349
+354
+356
+363
+368
+370
+```
+The Arduino Uno's analog precision is 10 bits, or it provides analog readings from 0 to 1023. As a result, we can take each of these readings and divide them by 1024 to scale the brightness readings from 0 to 1. We could also scale from 0 to 5 volts by multiplying by 5V. From these raw readings, we can intuitively see relative brightness, or the difference bewteen light and dark. With my finger over the sensor, readings rose to ~800; with my phone's light near it, they dropped to 30. 
+
+By consulting the [datasheet](https://www.kth.se/social/files/54ef17dbf27654753f437c56/GL5537.pdf) for the photoresistor, we can then determine the ambient brightness in lux (a unit of illumination). 
 
 #### Digital Sensors 
 
@@ -31,7 +76,7 @@ Wiring a sensor to an Arduino depends on the communication protocol in use. This
 # Part II: Interfacing an Arduino with Desktop Applications 
 ## Building Python and Processing apps that talk to Arduinos (via USB)
 
-This hackpack covers the process of writing simple Arduino programs that interact with a computer. This permits fairly effortless interaction between sensors and desktop applications, such as visualizations of sensor data, peripheral control of computer systems, or controlling robotics devices. 
+This section of the hackpack covers the process of writing simple Arduino programs that interact with a computer. This permits fairly effortless interaction between sensors and desktop applications, such as visualizations of sensor data, peripheral control of computer systems, or controlling robotics devices. 
 
 We begin with a brief outline of serial communication and proceed to create a simple app that communicates from an Arduino to a desktop computer. Note that a similar procedure can be used to connect an Arduino to a Raspberry Pi. 
 

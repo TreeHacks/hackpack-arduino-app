@@ -1,6 +1,9 @@
+/* 
+ *  Photoresistor sample code. Prints out value of photoresistor 
+ *  reading on analog pin A5. 
+ */
 
-int analogPin = A0;  
-
+int pin = A5;  
 int val = 0; 
 
 void setup() {
@@ -8,6 +11,6 @@ void setup() {
 }
 
 void loop() {
-  val = analogRead(analogPin);
+  val = analogRead(pin);
   Serial.println(val);
 }
