@@ -63,6 +63,10 @@ The Arduino Uno's analog precision is 10 bits, or it provides analog readings fr
 By consulting the [datasheet](https://www.kth.se/social/files/54ef17dbf27654753f437c56/GL5537.pdf) for the photoresistor, we can then determine the ambient brightness in lux (a unit of illumination). 
 
 #### Digital Sensors 
+I2C is a common communication protocol for sensors. We'll go over how to use the BMP180 with an Arduino. Take a four pin connection wire and plug it into the BMP 180's circuit board. Plug the red (VCC) wire into 5V, the black wire (GND) into GND, the white wire (SDA) into SDA on the Uno (may be labeled on reverse side) and the brown wire (SCL) into the Uno's SCL pin. The BMP 180 reads ambient pressure, which can be used to calculate an approximate altitude. 
+
+Unlike the analog sensor, the I2C sensor requires the Arduino to send it a message asking for the current pressure. Consequently, the process for reading data is more complex. Luckily, many mainstream I2C sensors have Arduino libraries that simplify this process. Download the Sparkfun BMP180 library from here: https://github.com/sparkfun/BMP180_Breakout_Arduino_Library, and put it in your ```Documents/Arduino/Libraries``` folder. You'll have to close and reopen the Arduino IDE every time you install a new library. 
+
 
 
 #### PWM with a laser transmitter
