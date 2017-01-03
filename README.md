@@ -67,15 +67,41 @@ I2C is a common communication protocol for sensors. We'll go over how to use the
 
 Unlike the analog sensor, the I2C sensor requires the Arduino to send it a message asking for the current pressure. Consequently, the process for reading data is more complex. Luckily, many mainstream I2C sensors have Arduino libraries that simplify this process. Download the Sparkfun BMP180 library from here: https://github.com/sparkfun/BMP180_Breakout_Arduino_Library, and put it in your ```Documents/Arduino/Libraries``` folder. You'll have to close and reopen the Arduino IDE every time you install a new library. 
 
+Navigate to File->Examples->Sparkfun BMP180->BMP180 Altitude Example, and download the program to your Arduino. When you open the serial monitor, you should see: 
+```
+REBOOT
+BMP180 init success
+baseline pressure: 1002.33 mb
+relative altitude:  0.3 meters,  1 feet
+relative altitude:  0.4 meters,  1 feet
+relative altitude:  0.6 meters,  2 feet
+```
+Note that the BMP 180 can also read temperature (not covered in this example code). If you see: 
+```
+BMP180 init fail (disconnected?)
+```
+there is likely an issue with the sensor's wiring. Make sure that SDA on the sensor is connected to SDA on the Arduino, and SCL to SCL as well. 
 
+Let's take a quick look at how the code works. The Arduino sketch includes two external header files: 
+```
+#include <SFE_BMP180.h>
+#include <Wire.h>
+```
+One is the Sparkfun library - `SFE_BMP180`, and the other is Arduino's I2C communication library, Wire. The program creates an object, `SFE_BMP180`, that will be used to send messages through the library to the physical sensor. The `setup()` function initializes the sensor by attempting to send a message over I2C and receive an acknowledgement. If it fails, the program prints an error message and loops infinitely. 
+
+Otherwise, the `loop()` function runs. This calls `getPressure()`, which sends a request for the temperature (see explanation in code), reads the temperature, requests pressure, and then reads the current pressure, which is returned by the method and printed to the user. 
 
 #### PWM with a laser transmitter
 
+TODO
 
 ### Finding or writing code 
 
-## Using data from sensors 
+Often, the most efficient way to get started with other I2C or SPI sensors is to find an Arduino library and test out their example code. From that, it is generally fairly intuitive process to use a sensor in a more general application. For example, if you wanted to use the BMP 180 in an application that calculated pressure or altitude, it would be simple to use the ```double getPressure()``` method provided in the Sparkfun library in your code. 
+
 ## Sensors available 
+
+See ??????? for sensors available during Treehacks. 
 
 # Part II: Interfacing an Arduino with Desktop Applications 
 ## Building Python and Processing apps that talk to Arduinos (via USB)
