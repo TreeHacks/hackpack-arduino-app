@@ -1,7 +1,9 @@
 # Part I: Using sensors with Arduino 
 ## Arduino Digital/Analog pins 
 ## Types of sensors 
-## 
+## Reading from sensors 
+## Using data from sensors 
+## Sensors available 
 
 # Part II: Interfacing an Arduino with Desktop Applications 
 ## Building Python and Processing apps that talk to Arduinos (via USB)
