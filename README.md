@@ -5,7 +5,20 @@ All Arduinos are equipped with a combination of analog (A1-AX) and digital (1-Y)
 [pinout image] 
 
 ## Types of sensors 
+
+Consequently, sensors communicate with an Arduino through digital or analog pins. Analog sensors allow the Arduino to sense a voltage that indicates the sensor's current reading; for example, a thermistor is a resistor that changes resistance depending on the current temperature. By building a circuit with a thermistor, the Arduino can determine the current temperature as a function of the sensor's resistance. 
+
+Digital sensors can communicate with the Arduino using a variety of protocols, such as [I2C](https://learn.sparkfun.com/tutorials/i2c) or [SPI](https://learn.sparkfun.com/tutorials/serial-peripheral-interface-spi). These protocols allow the sensor to transfer data to the Arduino. In contrast to the thermistor, which required an Arduino to read the sensor's resistance and determine the temperature, a digital temperature sensor may simply transmit the current temperature to the Arduino. 
+
 ## Reading from sensors 
+
+### Hooking up the sensor 
+Wiring a sensor to an Arduino depends on the communication protocol in use. This tutorial will cover wiring with an analog sensor and a digital I2C sensor. 
+
+#### Analog Sensors 
+
+### Finding or writing code 
+
 ## Using data from sensors 
 ## Sensors available 
 
