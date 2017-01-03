@@ -1,5 +1,9 @@
 # Part I: Using sensors with Arduino 
 ## Arduino Digital/Analog pins 
+All Arduinos are equipped with a combination of analog (A1-AX) and digital (1-Y) pins (see graphic below). Analog pins allow the Arduino to sense a voltage within a particular range. When using an analog sensor, this range can be 0-3.3V or 0-5V, depending on how the sensor is wired. Digital pins can be used to sense or output a binary signal - either high (5V on the Arduino Uno), or low (0V on the Arduino Uno). Because they can read and write high or low values, digital pins can be used to transfer data in various communication protocols. 
+
+[pinout image] 
+
 ## Types of sensors 
 ## Reading from sensors 
 ## Using data from sensors 
