@@ -13,9 +13,15 @@ Digital sensors can communicate with the Arduino using a variety of protocols, s
 ## Reading from sensors 
 
 ### Hooking up the sensor 
-Wiring a sensor to an Arduino depends on the communication protocol in use. This tutorial will cover wiring with an analog sensor and a digital I2C sensor. 
+Wiring a sensor to an Arduino depends on the communication protocol in use. This tutorial will cover wiring with an analog sensor and a digital I2C sensor. All sensors mentioned in the tutorial are available at Treehacks. Many of them come with circuit boards that simplify the wiring. 
 
 #### Analog Sensors 
+
+#### Digital Sensors 
+
+
+#### PWM with a laser transmitter
+
 
 ### Finding or writing code 
 
