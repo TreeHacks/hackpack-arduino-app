@@ -1,4 +1,9 @@
-# Arduinos and Software 
+# Part I: Using sensors with Arduino 
+## Arduino Digital/Analog pins 
+## Types of sensors 
+## 
+
+# Part II: Interfacing an Arduino with Desktop Applications 
 ## Building Python and Processing apps that talk to Arduinos (via USB)
 
 This hackpack covers the process of writing simple Arduino programs that interact with a computer. This permits fairly effortless interaction between sensors and desktop applications, such as visualizations of sensor data, peripheral control of computer systems, or controlling robotics devices. 
