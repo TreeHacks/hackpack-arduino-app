@@ -208,7 +208,7 @@ void testContact() {
 
 Note that the line `while (Serial.available() <= 0)` will be true while there are no bytes waiting for the Arduino to process. 
 
-## Credit
+# Credit
 
 https://learn.sparkfun.com/tutorials/connecting-arduino-to-processing for some Processing examples, http://playground.arduino.cc/Interfacing/Python for python examples. 
 
