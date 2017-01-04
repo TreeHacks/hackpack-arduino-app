@@ -95,6 +95,8 @@ Otherwise, the `loop()` function runs. This calls `getPressure()`, which sends a
 
 Digital pins can also be used to output high (5V) or low (0V) voltage. Some digital pins are the Arduino are able to output voltages between 0V and 5V by quickly toggling the pin low and high; the corresponding output voltage is the percentage of time the pin is high multiplied by 5V. 
 
+Digital signals can be used to control lights, devices, or actuators. One simple example of using digital pins is controlling a small laser transmitter with an Arduino. 
+
 ### Finding or writing code 
 
 Often, the most efficient way to get started with other I2C or SPI sensors is to find an Arduino library and test out their example code. From that, it is generally fairly intuitive process to use a sensor in a more general application. For example, if you wanted to use the BMP 180 in an application that calculated pressure or altitude, it would be simple to use the ```double getPressure()``` method provided in the Sparkfun library in your code. 
