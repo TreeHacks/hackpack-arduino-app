@@ -93,7 +93,7 @@ Otherwise, the `loop()` function runs. This calls `getPressure()`, which sends a
 
 #### PWM with a laser transmitter
 
-TODO
+Digital pins can also be used to output high (5V) or low (0V) voltage. Some digital pins are the Arduino are able to output voltages between 0V and 5V by quickly toggling the pin low and high; the corresponding output voltage is the percentage of time the pin is high multiplied by 5V. 
 
 ### Finding or writing code 
 
