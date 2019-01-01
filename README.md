@@ -6,10 +6,11 @@ Arduinos are a type of microcontroller that are equipped with a combination of a
 
 ### Installing the Arduino App
 To get started, install the Arduino IDE from [here](https://www.arduino.cc/en/Main/Software). Follow the instructions on the installer, until you have the IDE downloaded. Then, just plug in your Arduino and you're ready to go! Arduino is programmed in a language that is based off of C/C++, but can also be interfaced in a variety of other languages. While we will not be going over these in this tutorial, links to tutorials for such languages can be found here.
-- [ ] (Python)[https://playground.arduino.cc/interfacing/python]
-- [ ] (Java)[http://playground.arduino.cc/interfacing/java]
-- [ ] (Ruby)[https://playground.arduino.cc/Interfacing/Ruby]
-- [ ] (Mathematica)[https://playground.arduino.cc/Interfacing/Mathematica] even?
+- [ ] [Python](https://playground.arduino.cc/interfacing/python)
+- [ ] [Java](http://playground.arduino.cc/interfacing/java)
+- [ ] [Ruby](https://playground.arduino.cc/Interfacing/Ruby)
+- [ ] [Mathematica](https://playground.arduino.cc/Interfacing/Mathematica)
+- [ ] [And Others...](https://playground.arduino.cc/Interfacing/)
 
 ### Starter Code
 When you first open the Arduino IDE, it will open up [starter code](https://www.arduino.cc/en/Tutorial/BareMinimum) that is the basis for all Arduino programs. Let's take a look at this code to understand what it means.
@@ -24,11 +25,34 @@ void loop() {
 
 }
 ```
-All code starts with a `setup()` and `loop()`. The setup code should consist of code that you need run only once - anything to setup the Arduino, or initialize pin modes. When working with Arduino pins, you have to declare what you will be using the pins for: using `pinMode(pin_number, pin_mode)`, where the `pin_mode` can be either `INPUT`, `OUTPUT`, or `INPUT_PULLUP`. 
+All code starts with a `setup()` and `loop()`. The `setup()` code should consist of code that you need run only once - anything to setup the Arduino, or initialize pin modes. When working with Arduino pins, you have to declare what you will be using the pins for: using [`pinMode(pin_number, pin_mode)`](https://www.arduino.cc/reference/en/language/functions/digital-io/pinmode/), where the `pin_mode` can be either `INPUT`, `OUTPUT`, or `INPUT_PULLUP`. The `loop()` code should consist of anything that will be looped - in this runs the main part of your code, with reading sensor values, performing functions, controlling servos and other outputs. One such output is directly controlling a pin's output state, using `digitalWrite(pin_number, output_state)`, where the `output_state` can be `HIGH` (1), which sets the pin voltage to 5V (or 3.3V depending on the Arduino) or `LOW` (0), which sets the pin voltage to 0V or GND. Other important functions include `delay(time)`, allowing you to pause the sketch for `time` milliseconds.
+
+One of the most basic sketches are as follows. This allows you to turn on and off the on-board LED connected to pin 13 every second.
+
+```cpp
+
+void setup() {
+  pinMode(13, OUTPUT); //set the pin_mode as OUTPUT
+  digitalWrite(13, LOW); //start off the pin as LOW
+}
+
+void loop() {
+  delay(1000); //wait 1 second
+  digitalWrite(13, HIGH); //set the pin to HIGH (5V)
+  delay(1000); //wait 1 second
+  digitalWrite(13, LOW); //set the pin to LOW (0V)
+}
+```
+
+The other `pin_mode`'s - `INPUT` and `INPUT_PULLUP` - are explained in the section below.
+
+## Part 2: Using sensors with Arduino.
+### PinMode `Input`
+### Types of sensors
+### Hooking up sensors
 <!---
 # Part I: Using sensors with Arduino
 ## Arduino Digital/Analog pins
-All Arduinos are equipped with a combination of analog (A1-AX) and digital (1-Y) pins (see graphic below). Analog pins allow the Arduino to sense a voltage within a particular range. When using an analog sensor, this range can be 0-3.3V or 0-5V, depending on how the sensor is wired. Digital pins can be used to sense or output a binary signal - either high (5V on the Arduino Uno), or low (0V on the Arduino Uno). Because they can read and write high or low values, digital pins can be used to transfer data in various communication protocols.
 
 ## Types of sensors
 
