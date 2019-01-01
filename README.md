@@ -4,9 +4,27 @@ Arduinos are a type of microcontroller that are equipped with a combination of a
 
 ![Arduino Uno](https://cdn.arduino.cc/homepage/static/media/arduino-UNO.bcc69bde.png)
 
-###Installing the Arduino App
-To get started, install the Arduino IDE from [here](https://www.arduino.cc/en/Main/Software). Follow the instructions on the installer, until you have the IDE downloaded. Then, just plug in your Arduino and you're ready to go!
+### Installing the Arduino App
+To get started, install the Arduino IDE from [here](https://www.arduino.cc/en/Main/Software). Follow the instructions on the installer, until you have the IDE downloaded. Then, just plug in your Arduino and you're ready to go! Arduino is programmed in a language that is based off of C/C++, but can also be interfaced in a variety of other languages. While we will not be going over these in this tutorial, links to tutorials for such languages can be found here.
+- [ ] (Python)[https://playground.arduino.cc/interfacing/python]
+- [ ] (Java)[http://playground.arduino.cc/interfacing/java]
+- [ ] (Ruby)[https://playground.arduino.cc/Interfacing/Ruby]
+- [ ] (Mathematica)[https://playground.arduino.cc/Interfacing/Mathematica] even?
 
+### Starter Code
+When you first open the Arduino IDE, it will open up [starter code](https://www.arduino.cc/en/Tutorial/BareMinimum) that is the basis for all Arduino programs. Let's take a look at this code to understand what it means.
+```cpp
+void setup() {
+  // put your setup code here, to run once:
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+
+}
+```
+All code starts with a `setup()` and `loop()`. The setup code should consist of code that you need run only once - anything to setup the Arduino, or initialize pin modes. When working with Arduino pins, you have to declare what you will be using the pins for: using `pinMode(pin_number, pin_mode)`, where the `pin_mode` can be either `INPUT`, `OUTPUT`, or `INPUT_PULLUP`. 
 <!---
 # Part I: Using sensors with Arduino
 ## Arduino Digital/Analog pins
