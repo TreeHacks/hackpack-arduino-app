@@ -25,22 +25,24 @@ void loop() {
 
 }
 ```
-All code starts with a `setup()` and `loop()`. The `setup()` code should consist of code that you need run only once - anything to setup the Arduino, or initialize pin modes. When working with Arduino pins, you have to declare what you will be using the pins for: using [`pinMode(pin_number, pin_mode)`](https://www.arduino.cc/reference/en/language/functions/digital-io/pinmode/), where the `pin_mode` can be either `INPUT`, `OUTPUT`, or `INPUT_PULLUP`. The `loop()` code should consist of anything that will be looped - in this runs the main part of your code, with reading sensor values, performing functions, controlling servos and other outputs. One such output is directly controlling a pin's output state, using `digitalWrite(pin_number, output_state)`, where the `output_state` can be `HIGH` (1), which sets the pin voltage to 5V (or 3.3V depending on the Arduino) or `LOW` (0), which sets the pin voltage to 0V or GND. Other important functions include `delay(time)`, allowing you to pause the sketch for `time` milliseconds.
+All code starts with a `setup()` and `loop()`. The `setup()` code should consist of code that you need run only once - anything to setup the Arduino, or initialize pin modes. When working with Arduino pins, you have to declare what you will be using the pins for: using [`pinMode(pin_number, pin_mode)`](https://www.arduino.cc/reference/en/language/functions/digital-io/pinmode/), where the `pin_mode` can be either `INPUT`, `OUTPUT`, or `INPUT_PULLUP`.
 
-One of the most basic sketches are as follows. This allows you to turn on and off the on-board LED connected to pin 13 every second.
+The `loop()` code should consist of anything that will be looped - in this runs the main part of your code, with reading sensor values, performing functions, controlling servos and other outputs. One such output is directly controlling a pin's output state, using [`digitalWrite(pin_number, output_state)`](https://www.arduino.cc/reference/en/language/functions/digital-io/digitalwrite/), where the `output_state` can be `HIGH` (1), which sets the pin voltage to 5V (or 3.3V depending on the Arduino) or `LOW` (0), which sets the pin voltage to 0V or GND. Other important functions include `delay(time)`, allowing you to pause the sketch for `time` milliseconds.
+
+One of the most [basic sketches](https://www.arduino.cc/en/Tutorial/Blink) is as follows. This allows you to turn on and off the on-board LED connected to the Arduino every second.
 
 ```cpp
 
 void setup() {
-  pinMode(13, OUTPUT); //set the pin_mode as OUTPUT
-  digitalWrite(13, LOW); //start off the pin as LOW
+  pinMode(LED_BUILTIN, OUTPUT); //set the pin_mode as OUTPUT
+  digitalWrite(LED_BUILTIN, LOW); //start off the pin as LOW
 }
 
 void loop() {
   delay(1000); //wait 1 second
-  digitalWrite(13, HIGH); //set the pin to HIGH (5V)
+  digitalWrite(LED_BUILTIN, HIGH); //set the pin to HIGH (5V)
   delay(1000); //wait 1 second
-  digitalWrite(13, LOW); //set the pin to LOW (0V)
+  digitalWrite(LED_BUILTIN, LOW); //set the pin to LOW (0V)
 }
 ```
 
@@ -290,9 +292,9 @@ void testContact() {
 Note that the line `while (Serial.available() <= 0)` will be true while there are no bytes waiting for the Arduino to process.
 -->
 
-# Credit
+## Credit
 
-Official Arduino guide found [here](https://www.arduino.cc/en/Guide/HomePage)
-https://learn.sparkfun.com/tutorials/connecting-arduino-to-processing for some Processing examples, http://playground.arduino.cc/Interfacing/Python for python examples.
+Official Arduino guide found [here](https://www.arduino.cc/en/Guide/HomePage).
+Built in tutorials found [here](https://www.arduino.cc/en/Tutorial/BuiltInExamples).
 
-by Jainil & Andrew
+by [Jainil](https://github.com/jsutaria) & [Andrew](https://github.com/amilich)
