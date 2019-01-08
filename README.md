@@ -259,7 +259,7 @@ Processing can be downloaded at https://processing.org/. With similar syntax to 
 
 This guide will discuss a simple example in Processing for serial communication.
 
-```
+```cpp
 Serial myPort;  // Create Serial object
 String val;  	// For serial data
 
@@ -294,7 +294,7 @@ Though Processing and python provide some of the simplest methods for interfacin
 
 It is possible to perform two way communication with the Arduino as well. Generally, it is good practice to perform some sort of handshake between the microcontroller and the computer to ensure both devices are sending messages when expected. This can be as simple as:
 
-```
+```cpp
 void testContact() {
 	// While there are no bytes incoming on the Serial
 	while (Serial.available() <= 0) {
