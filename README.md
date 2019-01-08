@@ -1,4 +1,7 @@
 # Arduino Hackpack Tutorial
+### Cloning this repository
+Clone this repository by running `git clone https://github.com/TreeHacks/hackpack-arduino-app.git` from your command line. It includes this README and sample code.
+
 ## Part 1: Getting started with Arduino
 Arduinos are a type of microcontroller that are equipped with a combination of analog equipped with a combination of analog (A1-AX) and digital (1-Y) pins (see graphic below). Analog pins allow the Arduino to sense a voltage within a particular range. When using an analog sensor, this range can be 0-3.3V or 0-5V, depending on how the sensor is wired. Digital pins can be used to sense or output a binary signal - either high (5V on the Arduino Uno), or low (0V on the Arduino Uno). Because they can read and write high or low values, digital pins can be used to transfer data in various communication protocols.
 
@@ -88,13 +91,12 @@ We'll go over how to use one of Treehacks' photoresistors with an Arduino Uno. T
 
 Now that the sensor is wired, we've got to upload and run code to test it. Open (or [download](https://www.arduino.cc/en/main/software) and open) the Arduino app, and open the file "photoresistor/photoresistor/ino" located in this repository.
 
-```
+```cpp
 /*
- *  Photoresistor sample code. Prints out value of photoresistor
- *  reading on analog pin A5.
+ *  Photoresistor sample code. Prints out value of photoresistor reading on analog pin A2.
  */
 
-int pin = A5;  
+int pin = A2;  
 int val = 0;
 
 void setup() {
@@ -106,8 +108,6 @@ void loop() {
   Serial.println(val);
 }
 ```
-<!---
-
 
 This code is quite simple: it takes an integer analog reading and prints it to the Serial monitor, which can be opened from the Arduino app. You should see a stream of numbers:
 ```
@@ -126,7 +126,7 @@ This code is quite simple: it takes an integer analog reading and prints it to t
 368
 370
 ```
-The Arduino Uno's analog precision is 10 bits, or it provides analog readings from 0 to 1023. As a result, we can take each of these readings and divide them by 1024 to scale the brightness readings from 0 to 1. We could also scale from 0 to 5 volts by multiplying by 5V. From these raw readings, we can intuitively see relative brightness, or the difference bewteen light and dark. With my finger over the sensor, readings rose to ~800; with my phone's light near it, they dropped to 30.
+The Arduino Uno's analog precision is 10 bits, or it provides analog readings from 0 to 1023. As a result, we can take each of these readings and divide them by 1024 to scale the brightness readings from 0 to 1. We could also scale from 0 to 5 volts by multiplying by 5V. From these raw readings, we can intuitively see relative brightness, or the difference between light and dark. With my finger over the sensor, readings rose to ~800; with my phone's light near it, they dropped to 30.
 
 By consulting the [datasheet](https://www.kth.se/social/files/54ef17dbf27654753f437c56/GL5537.pdf) for the photoresistor, we can then determine the ambient brightness in lux (a unit of illumination).
 
@@ -159,10 +159,10 @@ Make sure `static boolean serialVisual = true` is true. Now, you should see this
 --------------|-
 ```
 
-#### Digital Sensors
+### Digital Sensors
 I2C is a common communication protocol for sensors. We'll go over how to use the BMP180 with an Arduino. Take a four pin connection wire and plug it into the BMP 180's circuit board. Plug the red (VCC) wire into 5V, the black wire (GND) into GND, the white wire (SDA) into SDA on the Uno (may be labeled on reverse side) and the brown wire (SCL) into the Uno's SCL pin. The BMP 180 reads ambient pressure, which can be used to calculate an approximate altitude.
 
-Unlike the analog sensor, the I2C sensor requires the Arduino to send it a message asking for the current pressure. Consequently, the process for reading data is more complex. Luckily, many mainstream I2C sensors have Arduino libraries that simplify this process. Download the Sparkfun BMP180 library from here: https://github.com/sparkfun/BMP180_Breakout_Arduino_Library, and put it in your ```Documents/Arduino/Libraries``` folder. You'll have to close and reopen the Arduino IDE every time you install a new library.
+Unlike the analog sensor, the I2C sensor requires the Arduino to send it a message asking for the current pressure. Consequently, the process for reading data is more complex. Luckily, many mainstream I2C sensors have Arduino libraries that simplify this process. Download the Sparkfun BMP180 library from [here](https://github.com/sparkfun/BMP180_Breakout_Arduino_Library), and put it in your ```Documents/Arduino/Libraries``` folder. You'll have to close and reopen the Arduino IDE every time you install a new library.
 
 Navigate to File->Examples->Sparkfun BMP180->BMP180 Altitude Example, and download the program to your Arduino. When you open the serial monitor, you should see:
 ```
@@ -188,19 +188,19 @@ One is the Sparkfun library - `SFE_BMP180`, and the other is Arduino's I2C commu
 
 Otherwise, the `loop()` function runs. This calls `getPressure()`, which sends a request for the temperature (see explanation in code), reads the temperature, requests pressure, and then reads the current pressure, which is returned by the method and printed to the user.
 
-#### PWM with a laser transmitter
+### PWM with a laser transmitter
 
 Digital pins can also be used to output high (5V) or low (0V) voltage. Some digital pins are the Arduino are able to output voltages between 0V and 5V by quickly toggling the pin low and high; the corresponding output voltage is the percentage of time the pin is high multiplied by 5V.
 
 Digital signals can be used to control lights, devices, or actuators. One simple example of using digital pins is controlling a small laser transmitter with an Arduino.
 
-### Finding or writing code
+#### Finding or writing code
 
 Often, the most efficient way to get started with other I2C or SPI sensors is to find an Arduino library and test out their example code. From that, it is generally fairly intuitive process to use a sensor in a more general application. For example, if you wanted to use the BMP 180 in an application that calculated pressure or altitude, it would be simple to use the ```double getPressure()``` method provided in the Sparkfun library in your code.
 
 ## Sensors available
 
-See ??????? for sensors available during Treehacks.
+See our [live site](live.treehacks.com) for sensors available during Treehacks.
 
 # Part II: Interfacing an Arduino with Desktop Applications
 ## Building Python and Processing apps that talk to Arduinos (via USB)
@@ -210,8 +210,6 @@ This section of the hackpack covers the process of writing simple Arduino progra
 We begin with a brief outline of serial communication and proceed to create a simple app that communicates from an Arduino to a desktop computer. Note that a similar procedure can be used to connect an Arduino to a Raspberry Pi.
 
 Serial communication through a UART port enables an Arduino to send messages to other devices, such as a desktop computer or another Arduino. Serial communication is a frequently used protocol to send data among devices; prior to USB, many computer peripherals were serial devices. Today, UART ports are frequently used to send data from an embedded device, such as an Arduino or Raspberry Pi, to sensors, including a GPS or LCD display. For more information on the mechanics of serial communication, consult: https://learn.sparkfun.com/tutorials/serial-communication.
-
-Clone this repository by running `git clone https://github.com/TreeHacks/hackpack-arduino-app.git` from your command line. It includes this readme and sample code.
 
 ## Arduino: Using the Serial Monitor
 
@@ -306,7 +304,6 @@ void testContact() {
 ```
 
 Note that the line `while (Serial.available() <= 0)` will be true while there are no bytes waiting for the Arduino to process.
--->
 
 ## Credit
 
