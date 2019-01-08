@@ -32,7 +32,6 @@ The `loop()` code should consist of anything that will be looped - in this runs 
 One of the most [basic sketches](https://www.arduino.cc/en/Tutorial/Blink) is as follows. This allows you to turn on and off the on-board LED connected to the Arduino every second.
 
 ```cpp
-
 void setup() {
   pinMode(LED_BUILTIN, OUTPUT); //set the pin_mode as OUTPUT
   digitalWrite(LED_BUILTIN, LOW); //start off the pin as LOW
@@ -49,8 +48,36 @@ void loop() {
 The other `pin_mode`'s - `INPUT` and `INPUT_PULLUP` - are explained in the section below.
 
 ## Part 2: Using sensors with Arduino.
-### PinMode `Input`
+### PinMode `INPUT` (and `INPUT_PULLUP`)
+The pinmodes `INPUT` and `INPUT_PULLUP` allow you to gain
+access to a myriad of information from the 'outside world.' The analog pins allow you to read an analog value ranging from 0-5V (with a 10 bit precision from `0`-`1023`), and thus can read information from many different sensors. Digital pins allows you to read data with 1 bit precision (`0` or `1`), and can be used for buttons, switches, and some other types of sensors.  
+
+To [read an analog input](https://www.arduino.cc/en/Tutorial/AnalogReadSerial) from a [potentiometer](http://www.resistorguide.com/potentiometer/), the following code and schematic can be used.
+
+![Potentiometer Schematic](https://www.arduino.cc/en/uploads/Tutorial/AnalogReadSerial_BB.png)
+
+```cpp
+void setup() {
+  // initialize serial communication at 9600 bits per second:
+  Serial.begin(9600);
+}
+
+void loop() {
+  int sensorValue = analogRead(A0);
+  // print out the value you read:
+  Serial.println(sensorValue);
+  delay(1);        // delay in between reads for stability
+}
+```
+
+_Analog pins do not need to be configured as input pins using `pinMode(INPUT)`, as they are already automatically configured as such_
+
 ### Types of sensors
+
+Analog sensors allow the Arduino to sense a voltage that indicates the sensor's current reading; for example, a thermistor is a resistor that changes resistance depending on the current temperature. By building a circuit with a thermistor, the Arduino can determine the current temperature as a function of the sensor's resistance.
+
+Digital sensors can communicate with the Arduino using a variety of protocols, such as [I2C](https://learn.sparkfun.com/tutorials/i2c) or [SPI](https://learn.sparkfun.com/tutorials/serial-peripheral-interface-spi). These protocols allow the sensor to transfer data to the Arduino. In contrast to the thermistor, which required an Arduino to read the sensor's resistance and determine the temperature, a digital temperature sensor may simply transmit the current temperature to the Arduino.
+
 ### Hooking up sensors
 <!---
 # Part I: Using sensors with Arduino
@@ -58,10 +85,7 @@ The other `pin_mode`'s - `INPUT` and `INPUT_PULLUP` - are explained in the secti
 
 ## Types of sensors
 
-Consequently, sensors communicate with an Arduino through digital or analog pins. Analog sensors allow the Arduino to sense a voltage that indicates the sensor's current reading; for example, a thermistor is a resistor that changes resistance depending on the current temperature. By building a circuit with a thermistor, the Arduino can determine the current temperature as a function of the sensor's resistance.
-
-Digital sensors can communicate with the Arduino using a variety of protocols, such as [I2C](https://learn.sparkfun.com/tutorials/i2c) or [SPI](https://learn.sparkfun.com/tutorials/serial-peripheral-interface-spi). These protocols allow the sensor to transfer data to the Arduino. In contrast to the thermistor, which required an Arduino to read the sensor's resistance and determine the temperature, a digital temperature sensor may simply transmit the current temperature to the Arduino.
-
+Consequently, sensors communicate with an Arduino through digital or analog pins.
 ## Reading from sensors
 
 ### Hooking up the sensor
@@ -295,6 +319,6 @@ Note that the line `while (Serial.available() <= 0)` will be true while there ar
 ## Credit
 
 Official Arduino guide found [here](https://www.arduino.cc/en/Guide/HomePage).
-Built in tutorials found [here](https://www.arduino.cc/en/Tutorial/BuiltInExamples).
+Built-in tutorials found [here](https://www.arduino.cc/en/Tutorial/BuiltInExamples).
 
 by [Jainil](https://github.com/jsutaria) & [Andrew](https://github.com/amilich)
