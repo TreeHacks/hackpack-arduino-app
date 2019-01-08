@@ -79,22 +79,12 @@ Analog sensors allow the Arduino to sense a voltage that indicates the sensor's 
 Digital sensors can communicate with the Arduino using a variety of protocols, such as [I2C](https://learn.sparkfun.com/tutorials/i2c) or [SPI](https://learn.sparkfun.com/tutorials/serial-peripheral-interface-spi). These protocols allow the sensor to transfer data to the Arduino. In contrast to the thermistor, which required an Arduino to read the sensor's resistance and determine the temperature, a digital temperature sensor may simply transmit the current temperature to the Arduino.
 
 ### Hooking up sensors
-<!---
-# Part I: Using sensors with Arduino
-## Arduino Digital/Analog pins
-
-## Types of sensors
-
-Consequently, sensors communicate with an Arduino through digital or analog pins.
-## Reading from sensors
-
-### Hooking up the sensor
 Wiring a sensor to an Arduino depends on the communication protocol in use. This tutorial will cover wiring with an analog sensor and a digital I2C sensor. All sensors mentioned in the tutorial are available at Treehacks. Many of them come with circuit boards that simplify the wiring.
 
 #### Analog Sensors
-We'll go over how to use one of Treehacks' photoresistors with an Arduino Uno. Take the sensor breakout and plug in one of the three pin attachment cables. This cable allows easy connection to an Arduino or breadboard. Plug the black lead (labeled GND) into a GND (ground, or 0V) pin on the Arduino, the red (labeled VCC) into the Uno's 5V pin, and the yellow cable into A5.
+We'll go over how to use one of Treehacks' photoresistors with an Arduino Uno. Take the sensor breakout and plug in one of the three pin attachment cables. This cable allows easy connection to an Arduino or breadboard. Plug the black lead (labeled GND) into a GND (ground, or 0V) pin on the Arduino, the red (labeled VCC) into the Uno's 5V pin, and the yellow/blue cable into A2.
 
-[wiring picture]
+![Wiring picture](https://arduinomodules.info/wp-content/uploads/Arduino_KY-018_Keyes_photoresistor_module_connection_diagram.png)
 
 Now that the sensor is wired, we've got to upload and run code to test it. Open (or [download](https://www.arduino.cc/en/main/software) and open) the Arduino app, and open the file "photoresistor/photoresistor/ino" located in this repository.
 
@@ -116,6 +106,8 @@ void loop() {
   Serial.println(val);
 }
 ```
+<!---
+
 
 This code is quite simple: it takes an integer analog reading and prints it to the Serial monitor, which can be opened from the Arduino app. You should see a stream of numbers:
 ```
