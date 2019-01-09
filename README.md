@@ -87,7 +87,7 @@ Wiring a sensor to an Arduino depends on the communication protocol in use. This
 #### Analog Sensors
 We'll go over how to use one of Treehacks' photoresistors with an Arduino Uno. Take the sensor breakout and plug in one of the three pin attachment cables. This cable allows easy connection to an Arduino or breadboard. Plug the black lead (labeled GND) into a GND (ground, or 0V) pin on the Arduino, the red (labeled VCC) into the Uno's 5V pin, and the yellow/blue cable into A2.
 
-![Wiring picture](https://arduinomodules.info/wp-content/uploads/Arduino_KY-018_Keyes_photoresistor_module_connection_diagram.png)
+![Wiring picture](https://raw.githubusercontent.com/TreeHacks/hackpack-arduino-app/master/Resources/photoresistor.png)
 
 Now that the sensor is wired, we've got to upload and run code to test it. Open (or [download](https://www.arduino.cc/en/main/software) and open) the Arduino app, and open the file "photoresistor/photoresistor/ino" located in this repository.
 
